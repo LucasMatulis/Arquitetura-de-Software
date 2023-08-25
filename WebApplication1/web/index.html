@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link href="public/css/normalize.css" rel="stylesheet" type="text/css"/>
+    <link href="public/css/global.css" rel="stylesheet" type="text/css"/>
+    <title>Sistema Senac</title>
+    <body>
+        <header>
+            <img src="public/assets/images/1200px-Senac_logo.svg.png" alt=""/>
+            <form method="post" action="ControleLogin">
+                <label for="user"> Usuário </label>
+                <input id="user" type="text" name="usuario">
+                <label for="senha"> Senha </label>
+                <input id="senha" type="password" name="senha">
+                <input type="submit" value="Entrar">
+            </form>
+        </header>
+        <nav>
+            <div class="menu">
+                <button class="botao">Funcionarios</button>
+                <div class="submenu">
+                    <a href="Cfun.html" target="centro">Cadastro</a>
+                    <a href="Rfun.html" target="centro">Consulta</a>
+                    <a href="Ufun.html" target="centro">Alteração</a>
+                    <a href="Dfun.html" target="centro">Exclusão</a>
+                    <a href="Lfun.html" target="centro">Listagem</a>                    
+                </div>
+            </div>
+            <div class="menu">
+                <button class="botao">Departamentos</button>
+                <div class="submenu">
+                    <a href="Cdep.html" target="centro">Cadastro</a>
+                    <a href="Rdep.html" target="centro">Consulta</a>
+                    <a href="Udep.html" target="centro">Alteração</a>
+                    <a href="Ddep.html" target="centro">Exclusão</a>
+                    <a href="Ldep.html" target="centro">Listagem</a>                    
+                </div>
+            </div>
+            <div class="menu">
+                <button class="botao">Usuarios</button>
+                <div class="submenu">
+                    <a href="Cuser.html" target="centro">Cadastro</a>
+                    <a href="Ruser.html" target="centro">Consulta</a>
+                    <a href="Uuser.html" target="centro">Alteração</a>
+                    <a href="Duser.html" target="centro">Exclusão</a>
+                    <a href="Luser.html" target="centro">Listagem</a>                    
+                </div>
+            </div>
+        </nav>
+        <main>
+            <iframe src="inicial/index.html" title="inicial" name="centro">
+            </iframe>
+        </main>
+        <footer>
+            rodapé
+        </footer>
+    </body>
+    
+</html>
