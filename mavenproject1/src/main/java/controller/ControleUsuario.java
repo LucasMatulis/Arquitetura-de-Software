@@ -19,10 +19,16 @@ public class ControleUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String u,s;
-        u=request.getParameter("usuario");
-        s= request.getParameter("senha");
-       
+        String flag,u,s;
+        flag= request.getParameter("flag");
+        if(flag.equals("login")){
+            u=request.getParameter("usuario");
+            s= request.getParameter("senha");
+            //aqui vem a parte de verificação do login
+        }
+        else if(flag.equals("cadastroUsuario")){
+            
+        }
     }
 
     @Override
