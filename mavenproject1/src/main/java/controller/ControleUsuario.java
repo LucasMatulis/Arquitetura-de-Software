@@ -6,10 +6,13 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.EmpresaDao;
+import model.Usuario;
 
 /**
  *
@@ -19,12 +22,22 @@ public class ControleUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String flag,u,s;
+        String flag,u,s, mensagem;
         flag= request.getParameter("flag");
         if(flag.equals("login")){
             u=request.getParameter("usuario");
             s= request.getParameter("senha");
-            //aqui vem a parte de verificação do login
+            EmpresaDao dao= new EmpresaDao();
+            Usuario usuario= dao.validarLogin(u, s);
+            if(usuario==null){//não achou o Usuario no BD
+                mensagem= "usuario e/ou senha invalidos";
+                request.setAttribute("mensagem", mensagem);
+                RequestDispatcher disp= request.getRequestDispatcher("mensagens.jsp");
+                disp.forward(request, response);
+            }
+            else{//achou o usuario no BD
+                
+            }
         }
         else if(flag.equals("cadastroUsuario")){
             
