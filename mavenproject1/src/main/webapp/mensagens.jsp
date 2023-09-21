@@ -1,14 +1,25 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <p style="color:blue; font-size: 16px">
-            ${mensagem}
-        </p>
+        <header>
+            <a href="index.html">
+                <h1>SENAC</h1>
+            </a>
+        </header>
+        <main>
+            <p>${mensagem}</p>
+        </main>
+        <footer>
+           
+        </footer>
     </body>
 </html>
+
+

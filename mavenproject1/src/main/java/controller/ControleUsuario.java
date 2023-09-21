@@ -22,7 +22,7 @@ public class ControleUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String flag,u,s, mensagem;
+        String flag,u,s, mensagem, arquivo;
         flag= request.getParameter("flag");
         if(flag.equals("login")){
             u=request.getParameter("usuario");
@@ -30,13 +30,23 @@ public class ControleUsuario extends HttpServlet {
             EmpresaDao dao= new EmpresaDao();
             Usuario usuario= dao.validarLogin(u, s);
             if(usuario==null){//não achou o Usuario no BD
-                mensagem= "usuario e/ou senha invalidos";
+                mensagem= "Usuario e/ou senha invalidos";
                 request.setAttribute("mensagem", mensagem);
                 RequestDispatcher disp= request.getRequestDispatcher("mensagens.jsp");
                 disp.forward(request, response);
             }
             else{//achou o usuario no BD
-                
+                String nome= usuario.getFuncionario().getNomefuncionario();
+                String cargo= usuario.getFuncionario().getCargofuncionario();
+                if(cargo.equalsIgnoreCase("gerente")){
+                     arquivo="acesso_admin.jsp";
+                }
+                else{
+                     arquivo="acesso_admin.jsp";
+                }
+                request.setAttribute("nome", nome);
+                RequestDispatcher disp= request.getRequestDispatcher(arquivo);
+                disp.forward(request, response);
             }
         }
         else if(flag.equals("cadastroUsuario")){
