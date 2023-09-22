@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="post" action="ControleDepartamento">
+            <input type="hidden" name="flag" value="cad_dep">
+                 <p>
+                     <label for="id">ID:*</label>
+                     <input id="id" type="text" name="id" size="10" maxlength="10" required>
+                 </p>
+                 <p>
+                <input type="hidden" name="flag" value="login">
+                <label for="depar"> Nome:* </label>
+                <input id="depar" type="text" name="depar" size="10" maxlength="70" required>
+                </p>
+                <p>
+                 <label for="tel"> Telefone:* </label>
+                <input id="tel" type="text" name="tel" size="10" maxlength="15">
+                </p>
+                <input type="submit" value="Salvar">
+        </form>
+    </body>
+</html>
