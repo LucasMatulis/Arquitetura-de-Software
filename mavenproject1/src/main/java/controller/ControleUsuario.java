@@ -4,6 +4,7 @@
  */
 package controller;
 
+import jakarta.servlet.annotation.WebServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,7 @@ import model.Usuario;
 /**
  *
 Esta servelt gerenciara tudo referente a usuarios */
+@WebServlet(name = "ControleUsuario", urlPatterns = {"/ControleUsuario"})
 public class ControleUsuario extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
