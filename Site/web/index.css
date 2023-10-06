@@ -1,0 +1,93 @@
+/* 
+    Created on : 18 de ago. de 2023, 09:24:49
+    Author     : joao.vmatulis
+*/
+
+*{
+    margin: 0px auto;
+}
+
+header, nav, main, footer{
+    width: 90%;
+}
+
+header {
+    background-color: #918180;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+nav{
+    background-color: #fff;
+}
+
+main{
+    height: 300px;
+    background-color: #918180;
+}
+
+footer{
+    background-color: black;
+    color: white;
+}
+
+button.botao{
+    background: white;
+    color: black;
+    border:none;
+    cursor: pointer;
+}
+
+div.submenu{
+    display:none;
+    background-color: gray;
+    min-width: 103px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index:1;
+    position: absolute;
+}
+
+div.menu:hover div.submenu{
+    display:block;
+}
+
+div.submenu a{
+    padding:5px;
+    text-decoration: none;
+    display: block;
+    color: black
+}
+
+div.submenu a:hover{
+    color:red;
+}
+
+div.menu{
+    display: inline-block;
+    position: relative;
+}
+
+div.menu:hover button.botao{
+    background-color: red;
+}
+
+main iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Quando a tela tiver 600px ou menos */
+@media only screen and (max-width: 600px) {
+    header{
+        flex-direction: column;
+    }
+    
+    header > form{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+}
