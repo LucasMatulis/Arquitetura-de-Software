@@ -25,7 +25,7 @@
                 <td><%= dep.getIdDep()%> </td>
                 <td><%= dep.getNomeDep()%> </td>
                 <td><%= dep.getTelefoneDep()%> </td>
-                <td><a href="#">Excluir</a></td>
+                <td><a href="ControleDepartamento?flag=exc_dep&id=<%= dep.getIdDep()%>">Excluir</a></td>
             </tr>
         <%
             }
