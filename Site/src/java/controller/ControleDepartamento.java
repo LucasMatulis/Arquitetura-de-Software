@@ -26,10 +26,10 @@ public class ControleDepartamento extends HttpServlet {
             /*  Tenta cadastrar um departamento no banco de
                 dados e verifica qual foi o nivel de erro dele*/
             switch(new EmpresaDao().cadastrar(dep)){                
-                case 1:
+                case SUCESSO:
                     mensagem = "Departamento cadastrado com sucesso";
                     break;
-                case 2:
+                case CHAVEDUPLICADA:
                     mensagem = "O departamento "+dep.getIdDep()+" já está cadastrado";
                     break;
                 default:
@@ -39,31 +39,60 @@ public class ControleDepartamento extends HttpServlet {
             request.setAttribute("mensagem", mensagem);
             request.getRequestDispatcher("mensagens.jsp").forward(request, response);
         } else if(flag.equals("list_dep")){
-            List<Departamento> departamentos = new EmpresaDao().listar("Departamento.findAll", Departamento.class);
+            List<Departamento> departamentos;
+            departamentos = new EmpresaDao().listar("Departamento.findAll", Departamento.class);
             if(departamentos == null){
                 request.setAttribute("mensagem", "Nenhum departamento cadastrado no momento");
                 request.getRequestDispatcher("mensagem.jsp").forward(request, response);
             } else {                
                 request.setAttribute("departamentos", departamentos);
                 request.getRequestDispatcher("/Departamentos/mostrar_departamentos.jsp").forward(request, response);
-            }     
-        }
-        else if(flag.equals("exc_dep")){
-                    String id= request.getParameter("id");
-                    int retorno= new EmpresaDao().excluir(id,Departamento.class);
-            switch (retorno) {
-                case 1:
-                    mensagem= "Departametno "+id+" excluido com sucesso";
+            }
+            
+        }   else if(flag.equals("exc")){
+            String id = request.getParameter("id");
+            switch(new EmpresaDao().excluir(id, Departamento.class)){
+                case SUCESSO:
+                    mensagem = "Produto "+id+" excluí com sucesso";
                     break;
-                case 2:
-                    mensagem= "Departametno "+id+" não cadastrado";
+                case NAOCADASTRADO:
+                    mensagem = "Produto "+id+" não cadastrado";
                     break;
                 default:
-                    mensagem= "Erro encontrado.Entre em contato com o suporte";
+                    mensagem = "Erro encontrado. Entre em contato com o suporte";
                     break;
+                    
             }
             request.setAttribute("mensagem", mensagem);
-            request.getRequestDispatcher("mensagens.jsp").forward(request, response);   
+            request.getRequestDispatcher("mensagens.jsp").forward(request, response);
+        } else if(flag.equals("buscar_alt_dep")){
+            Departamento dep = new EmpresaDao().buscar(Departamento.class,request.getParameter("id"));
+            if(dep == null){
+                request.setAttribute("mensagem", "Departamento não encontrado");
+                request.getRequestDispatcher("mensagens.jsp").forward(request, response);
+            }else{
+                request.setAttribute("dep", dep);
+                request.getRequestDispatcher("/Departamentos/alterar_dep.jsp").forward(request, response);                
+            }
+        } else if(flag.equals("alt")){
+            String i, n, t;
+            i= request.getParameter("idDep");
+            n= request.getParameter("nomeDep");
+            t= request.getParameter("telefoneDep");
+            int resultado = new EmpresaDao().alterar(i, n, t);
+            switch(resultado){
+                case 1:
+                    mensagem = "Alteração no departamento "+ i + " realizada com sucesso";
+                    break;
+                default:
+                    mensagem = "Erro ao tentar alterar os dados. Entre em contato com o suporte";
+            }
+            request.setAttribute("mensagem", mensagem);
+            request.getRequestDispatcher("mensagens.jsp").forward(request, response);
+        } else if(flag.equals("buscar_departamentos")){
+            List<Departamento> listaDepartamentos = new EmpresaDao().listar("Departamento.findAll", Departamento.class);
+            request.setAttribute("listaDepartamentos", listaDepartamentos);
+            request.getRequestDispatcher("/Funcionario/cadfun.jsp").forward(request, response);
         }
     }
     

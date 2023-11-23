@@ -1,7 +1,3 @@
-/**
- * * @author joao.vmatulis
- * Esta servlet gerenciará tudo referente ao usuario
- */
 package controller;
 
 import java.io.IOException;

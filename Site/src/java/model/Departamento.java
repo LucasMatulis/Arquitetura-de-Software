@@ -54,11 +54,11 @@ public class Departamento implements Serializable {
         this.idDep = idDep;
         this.nomeDep = nomeDep;
     }
-
-    public Departamento(String idDep, String nomeDep, String telDep) {
+    
+    public Departamento(String idDep, String nomeDep, String telefoneDep) {
         this.idDep = idDep;
         this.nomeDep = nomeDep;
-        this.telefoneDep = telDep;
+        this.telefoneDep=telefoneDep;
     }
 
     public String getIdDep() {
